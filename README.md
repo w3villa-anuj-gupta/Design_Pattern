@@ -19,30 +19,6 @@ This project demonstrates the implementation of three fundamental design pattern
 - Allows employees to receive updates automatically
 - Decouples the announcement sender from the receivers
 
-## System Architecture
-
-### Component Diagram
-```
-            +-------------------+
-            |   OfficeConfig    |   (Singleton)
-            +-------------------+
-                     |
-          [shared resource]
-                     |
-            +-------------------+
-            |  EmployeeFactory  |   (Factory)
-            +-------------------+
-                     |
-         creates     v
-        --------> +---------------+    observes
-                  |   Employee    |----------------------+
-                  +---------------+                      |
-                       ^                                 v
-        +----------------------+      notifies    +----------------------+
-        | Observer (interface) |<----------------| AnnouncementService   |  (Observer)
-        +----------------------+                +-----------------------+
-```
-
 ### Flowchart
 
 ```
@@ -90,10 +66,3 @@ This project demonstrates the implementation of three fundamental design pattern
 | Singleton   | Single instance shared system-wide | OfficeConfig | Office-wide settings |
 | Factory     | Centralized object creation | EmployeeFactory | Employee creation |
 | Observer    | Publish–subscribe notification system | AnnouncementService | Office announcements to employees |
-
-## Benefits of This Implementation
-
-- **Maintainability**: Each pattern has a clear, single responsibility
-- **Extensibility**: Easy to add new employee types or notification methods
-- **Testability**: Components can be tested in isolation
-- **Flexibility**: Configuration can be changed without modifying the core logic
